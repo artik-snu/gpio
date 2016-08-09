@@ -881,7 +881,7 @@ typedef void *sensor_recorder_query_h;
  */
 typedef void *sensor_recorder_data_h;
 
-/*
+/**
  * @brief   Enumeration for option parameters for sensor recording.
  * @details None, one, or more option parameters can be set to #sensor_recorder_option_h,
  *          then applications can request to record a specific sensor with the parameters via
@@ -895,7 +895,7 @@ typedef enum
 	SENSOR_RECORDER_OPTION_INTERVAL,              /**< Desired interval between data records (minutes); int; see #sensor_recorder_interval_e */
 } sensor_recorder_option_e;
 
-/*
+/**
  * @brief   Enumeration for intervals between data records.
  * @details Some sensor types including #SENSOR_HRM may not fit to continuous monitoring and recording.
  *          To reduce the battery use for recoridng such sensors, recording interval between each
@@ -917,7 +917,7 @@ typedef enum
 	SENSOR_RECORDER_INTERVAL_1_DAY = 1440,      /**< 1 Day */
 } sensor_recorder_interval_e;
 
-/*
+/**
  * @brief   Enumeration for filtering and aggregation parameters for queyring sensor records.
  * @details None, one, or more query parameters can be set to #sensor_recorder_query_h,
  *          to specify the data to be retrieved via sensor_recorder_read().
@@ -933,7 +933,7 @@ typedef enum
 	SENSOR_RECORDER_QUERY_TIME_INTERVAL,    /**< The interval of each sliced querying duration (minutes); int */
 } sensor_recorder_query_e;
 
-/*
+/**
  * @brief   Enumeration for data attributes can be contained in #sensor_recorder_data_h.
  * @since_tizen @if MOBILE 3.0 @elseif WEARABLE 2.3.2 @endif
  * @see     sensor_recorder_data_get_int()
