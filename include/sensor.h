@@ -80,7 +80,7 @@ typedef enum
  * @brief   Enumeration for pedestrian state.
  * @details In its #sensor_event_s, #SENSOR_HUMAN_PEDOMETER reports the user's
  *          pedestrian state as one of the followings.
- * @since_tizen @if MOBILE 3.0 @elseif WEARABLE 2.3.2 @endif
+ * @since_tizen 3.0
  */
 typedef enum
 {
@@ -95,7 +95,7 @@ typedef enum
  * @brief   Enumeration for sleep state.
  * @details In its #sensor_event_s, #SENSOR_HUMAN_SLEEP_MONITOR reports the user's
  *          sleep state as one of the followings.
- * @since_tizen @if MOBILE 3.0 @elseif WEARABLE 2.3.2 @endif
+ * @since_tizen 3.0
  */
 typedef enum
 {
@@ -141,17 +141,13 @@ typedef enum
 	                                             @if MOBILE (Since 2.4) @elseif WEARABLE (Since 2.3.2) @endif */
 	SENSOR_GEOMAGNETIC_ROTATION_VECTOR,     /**< Geomagnetic-based rotation vector sensor
 	                                             @if MOBILE (Since 2.4) @elseif WEARABLE (Since 2.3.2) @endif */
-	SENSOR_HUMAN_PEDOMETER = 0x300,         /**< Pedometer
-	                                             @if MOBILE (Since 3.0) @elseif WEARABLE (Since 2.3.2) @endif
+	SENSOR_HUMAN_PEDOMETER = 0x300,         /**< Pedometer (Since 3.0)
 	                                             @n Privilege : http://tizen.org/privilege/healthinfo */
-	SENSOR_HUMAN_SLEEP_MONITOR,             /**< Sleep monitor
-	                                             @if MOBILE (Since 3.0) @elseif WEARABLE (Since 2.3.2) @endif
+	SENSOR_HUMAN_SLEEP_MONITOR,             /**< Sleep monitor (Since 3.0)
 	                                             @n Privilege : http://tizen.org/privilege/healthinfo */
-	SENSOR_HUMAN_SLEEP_DETECTOR,            /**< Sleep detector
-	                                             @if MOBILE (Since 3.0) @elseif WEARABLE (Since 2.3.2) @endif
+	SENSOR_HUMAN_SLEEP_DETECTOR,            /**< Sleep detector (Since 3.0)
 	                                             @n Privilege : http://tizen.org/privilege/healthinfo */
-	SENSOR_HUMAN_STRESS_MONITOR,            /**< Stress monitor
-	                                             @if MOBILE (Since 3.0) @elseif WEARABLE (Since 2.3.2) @endif
+	SENSOR_HUMAN_STRESS_MONITOR,            /**< Stress monitor (Since 3.0)
 	                                             @n Privilege : http://tizen.org/privilege/healthinfo */
 	SENSOR_LAST,                            /**< End of sensor enum values (Deprecated since 3.0) */
 	SENSOR_CUSTOM = 0x2710,                 /**< Custom sensor (Deprecated since 3.0) */
@@ -941,13 +937,20 @@ typedef enum
  */
 typedef enum
 {
-	SENSOR_RECORDER_DATA_STEPS = 0x00,           /**< Count of both walking and running steps; int */
-	SENSOR_RECORDER_DATA_WALK_STEPS,             /**< Count of walking steps; int */
-	SENSOR_RECORDER_DATA_RUN_STEPS,              /**< Count of running steps; int */
-	SENSOR_RECORDER_DATA_DISTANCE,               /**< Distance walked or ran (m); double */
-	SENSOR_RECORDER_DATA_CALORIE,                /**< Calorie burned (kcal); double */
-	SENSOR_RECORDER_DATA_HEART_RATE = 0x10,      /**< Heart Rate (BPM); int */
-	SENSOR_RECORDER_DATA_SLEEP_STATE = 0x20,     /**< Sleep state; int; One of #sensor_sleep_state_e */
+	SENSOR_RECORDER_DATA_STEPS = 0x00,           /**< Count of both walking and running steps; int
+	                                                  @if WEARABLE (Since 3.0) @endif */
+	SENSOR_RECORDER_DATA_WALK_STEPS,             /**< Count of walking steps; int
+	                                                  @if WEARABLE (Since 3.0) @endif */
+	SENSOR_RECORDER_DATA_RUN_STEPS,              /**< Count of running steps; int
+	                                                  @if WEARABLE (Since 3.0) @endif */
+	SENSOR_RECORDER_DATA_DISTANCE,               /**< Distance walked or ran (m); double
+	                                                  @if WEARABLE (Since 3.0) @endif */
+	SENSOR_RECORDER_DATA_CALORIE,                /**< Calorie burned (kcal); double
+	                                                  @if WEARABLE (Since 3.0) @endif */
+	SENSOR_RECORDER_DATA_HEART_RATE = 0x10,      /**< Heart Rate (BPM); int
+	                                                  @if WEARABLE (Since 3.0) @endif */
+	SENSOR_RECORDER_DATA_SLEEP_STATE = 0x20,     /**< Sleep state; int; One of #sensor_sleep_state_e
+	                                                  @if WEARABLE (Since 3.0) @endif */
 	SENSOR_RECORDER_DATA_PRESSURE = 0x30,        /**< Pressure; double */
 	SENSOR_RECORDER_DATA_MAX_PRESSURE,           /**< Max pressure; double */
 	SENSOR_RECORDER_DATA_MIN_PRESSURE,           /**< Min pressure; double */
