@@ -51,6 +51,13 @@
 
 #define CONVERT_OPTION_PAUSE_POLICY(option) ((option) ^ 0b11)
 
+#define WARN_DEPRECATED_SENSOR(X) \
+	do { \
+		if ((X) == SENSOR_LAST || (X) == SENSOR_CUSTOM) { \
+			_W("DEPRECATION WARNING: This sensor type is deprecated and will be removed from next release."); \
+		} \
+	} while (0)
+
 static int sensor_connect(sensor_h sensor, sensor_listener_h listener)
 {
 	int id = SENSOR_UNDEFINED_ID;
@@ -90,6 +97,8 @@ int sensor_is_supported(sensor_type_e type, bool *supported)
 	int result;
 	sensor_t sensor;
 
+	WARN_DEPRECATED_SENSOR(type);
+
 	if (type < SENSOR_ALL)
 		return SENSOR_ERROR_INVALID_PARAMETER;
 
@@ -124,6 +133,8 @@ int sensor_get_default_sensor(sensor_type_e type, sensor_h *sensor)
 	sensor_t _sensor;
 	sensor_privilege_t privilege;
 
+	WARN_DEPRECATED_SENSOR(type);
+
 	_D("called sensor_get_default_sensor : type[%d], sensor[0x%x]", type, sensor);
 
 	if (type < SENSOR_ALL)
@@ -157,6 +168,8 @@ int sensor_get_sensor_list(sensor_type_e type, sensor_h **list, int *sensor_coun
 	int result;
 	sensor_h *_list;
 	int count;
+
+	WARN_DEPRECATED_SENSOR(type);
 
 	_D("called sensor_get_list : type[%d]", type);
 
