@@ -39,10 +39,10 @@ extern "C"
 #define _E_MSG(err) SLOGE(_MSG_##err "(0x%08x)", (err))
 
 #ifdef _DEBUG
-	#define _E(fmt, args...) SLOGE(fmt, ##args)
-	#define _W(fmt, args...) SLOGW(fmt, ##args)
-	#define _I(fmt, args...) SLOGI(fmt, ##args)
-	#define _D(fmt, args...) SLOGD(fmt, ##args)
+	#define _E(fmt, args...) dlog_print(DLOG_ERROR, LOG_TAG, fmt, ##args)
+	#define _W(fmt, args...) dlog_print(DLOG_WARN, LOG_TAG, fmt, ##args)
+	#define _I(fmt, args...) dlog_print(DLOG_INFO, LOG_TAG, fmt, ##args)
+	#define _D(fmt, args...) dlog_print(DLOG_DEBUG, LOG_TAG, fmt, ##args)
 #else
 	#define _E(...)
 	#define _W(...)
