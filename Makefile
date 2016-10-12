@@ -1,6 +1,26 @@
+SDKDIR=${HOME}/tizen-studio
+DEVICE_CORE=${SDKDIR}/platforms/tizen-2.4/mobile/rootstraps/mobile-2.4-device.core/
 
-prefix?=/usr
+LINK=-L${DEVICE_CORE}/usr/lib -L${DEVICE_CORE}/lib
 
-install: main
-	install -d ${DESTDIR}${prefix}/bin/
-	install main ${DESTdir}${prefix}/bin/
+INCLUDE=-I${DEVICE_CORE}/usr/include
+
+# EDIT KERNEL CODE PATH
+INCLUDE+=-I/home/wwee3631/Projects/samsung/linux-exynos/include
+
+SYSROOT=${DEVICE_CORE}
+
+GCCROOT=${SDKDIR}/tools/arm-linux-gnueabi-gcc-4.9/bin
+
+CFLAGS=$(INCLUDE) $(LINK) --sysroot=$(SYSROOT) -lcapi-system-sensor
+
+CC=$(GCCROOT)/arm-linux-gnueabi-gcc
+
+all: test
+
+test: main.c
+	@echo [Arm-cc] $<...
+	@$(CC) $(CFLAGS) $< -o $@
+
+clean:
+	@rm test
