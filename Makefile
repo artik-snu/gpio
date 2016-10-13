@@ -18,9 +18,16 @@ CC=$(GCCROOT)/arm-linux-gnueabi-gcc
 
 all: test
 
-test: main.c
+DEPS = gpio.h
+
+%.o: %.c ${DEPS}
+	$(CC) -c -o $@ $< $(CFLAGS)
+
+OBJ = main.o gpio.o
+
+test: ${OBJ}
 	@echo [Arm-cc] $<...
-	@$(CC) $(CFLAGS) $< -o $@
+	@$(CC) -o $@ $^ ${CFLAGS}
 
 clean:
 	@rm test
