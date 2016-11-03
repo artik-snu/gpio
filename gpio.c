@@ -89,3 +89,7 @@ int8_t set_pin_value(gpio_pin pin, uint8_t value) {
         *(base + (port + 1)) |= (1 << offset);
     return 0;
 }
+
+void set_gpio_callback(gpio_pin pin, void* callback) {
+    printf("Not Implemented");
+}
