@@ -23,7 +23,7 @@ DEPS = gpio.h
 %.o: %.c ${DEPS}
 	$(CC) -c -o $@ $< $(CFLAGS)
 
-OBJ = read.o gpio.o
+OBJ = main.o gpio.o
 
 test: ${OBJ}
 	@echo [Arm-cc] $<...
