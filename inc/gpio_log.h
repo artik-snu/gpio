@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-#ifndef _SENSOR_LOG_H_
-#define _SENSOR_LOG_H_
+#ifndef _GPIO_LOG_H_
+#define _GPIO_LOG_H_
 
 #ifdef __cplusplus
 extern "C"
@@ -27,14 +27,14 @@ extern "C"
 #define _DEBUG 1
 
 #undef LOG_TAG
-#define LOG_TAG	"TIZEN_SYSTEM_SENSOR"
+#define LOG_TAG	"TIZEN_SYSTEM_GPIO"
 
-#define _MSG_SENSOR_ERROR_IO_ERROR "Io Error"
-#define _MSG_SENSOR_ERROR_INVALID_PARAMETER "Invalid Parameter"
-#define _MSG_SENSOR_ERROR_OUT_OF_MEMORY "Out of Memory"
-#define _MSG_SENSOR_ERROR_NOT_NEED_CALIBRATION "Not need calibration"
-#define _MSG_SENSOR_ERROR_NOT_SUPPORTED "Not supported"
-#define _MSG_SENSOR_ERROR_OPERATION_FAILED "Operation failed"
+#define _MSG_GPIO_ERROR_IO_ERROR "Io Error"
+#define _MSG_GPIO_ERROR_INVALID_PARAMETER "Invalid Parameter"
+#define _MSG_GPIO_ERROR_OUT_OF_MEMORY "Out of Memory"
+#define _MSG_GPIO_ERROR_NOT_NEED_CALIBRATION "Not need calibration"
+#define _MSG_GPIO_ERROR_NOT_SUPPORTED "Not supported"
+#define _MSG_GPIO_ERROR_OPERATION_FAILED "Operation failed"
 
 #define _E_MSG(err) SLOGE(_MSG_##err "(0x%08x)", (err))
 
@@ -54,4 +54,4 @@ extern "C"
 }
 #endif
 
-#endif /*_SENSOR_LOG_H_*/
+#endif /*_GPIO_LOG_H_*/

@@ -13,40 +13,37 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#include <gpio.h>
+#include <thread>
+#include <atomic>
 
-#ifndef __SENSOR_PRIVATE_H__
-#define __SENSOR_PRIVATE_H__
-
-struct sensor_listener_s {
-	int id;
-	int type;
-	int pause;
-	unsigned int batch_latency;
-	unsigned int magic;
-	void *sensor;
-	void *callback;
-	void *user_data;
-	void *accu_callback;
-	void *accu_user_data;
-};
+#ifndef __GPIO_PRIVATE_H__
+#define __GPIO_PRIVATE_H__
 
 #ifdef __cplusplus
 extern "C"
 {
 #endif
 
-float clamp(float v);
-int getAngleChange(float *R, float *prevR, float *angleChange);
-int quatToMatrix(float *quat, float *R);
-int matrixToQuat(float *mat, float *q);
-int getRotationMatrix(float *accel, float *geo, float *R, float *I);
-int remapCoordinateSystem(float *inR, int X, int Y, float *outR);
-int getDeclination(float *decl);
-int getInclination(float *incl);
-int setCoordinate(float latitude, float longitude, float altitude, float *declination, float *inclination, int option);
+struct gpio_listener_s {
+	int id;
+	gpio_pin_e pin;
+	gpio_direction_e direction;
+	gpio_value_e data;
+	int pause;
+	std::atomic<unsigned int> batch_latency;
+	unsigned int magic;
+	std::thread *read_thread;
+	std::atomic<bool> active; //if listener is started
+	gpio_h gpio;
+	gpio_event_cb callback;
+	void *user_data;
+	void *accu_callback;
+	void *accu_user_data;
+};
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif // __SENSOR_PRIVATE_H__
+#endif // __GPIO_PRIVATE_H__
