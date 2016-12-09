@@ -142,7 +142,7 @@ int send_debug_message(const char* msg) {
 	debug_msg.data_num = p_num;
 	debug_msg.data_buff[0] = 10;
 	strcpy(debug_msg.data_buff+8, msg);
-	send_message(&debug_msg);
+	return send_message(&debug_msg);
 }
 
 static void message_listener() {
@@ -186,10 +186,6 @@ static void message_listener() {
                 int prev_value = listener->data;
                 listener->data = msg_get_value(data);
 
-                char dbgmsg[200];
-                send_debug_message("prev print");
-                //sprintf(dbgmsg, "prev: %d, now: %d", prev_value, listener->data);
-                //send_debug_message(dbgmsg);
 		        if (prev_value != listener->data && listener->callback) {
 			        gpio_event_s *event = new gpio_event_s;
 			        event->timestamp =
@@ -207,7 +203,9 @@ static void message_listener() {
 		        }
             }
             break;
-
+        case 10:
+          printf("Got debug message\n");
+          break;
         default:
             perror("undefined message");
             break;
